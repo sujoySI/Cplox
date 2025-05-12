@@ -2,6 +2,7 @@
 .xmake/
 build/
 .fleet/
+.vscode/
 # MacOS Cache
 .DS_Store
 
