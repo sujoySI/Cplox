@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Cplox/common.hpp"
-#include "Cplox/value.hpp"
 
 enum class OpCode: uint8_t {
     OP_CONSTANT,
@@ -9,14 +8,17 @@ enum class OpCode: uint8_t {
 };
 
 struct Chunk{
-    int count;
-    int capacity;
-    uint8_t* code;
-    int* lines;
-    ValueArray constants;
-};
+    std::vector<uint8_t> code;
+    std::vector<int32_t> lines;
+    std::vector<double> constants;
 
-void initChunk(Chunk* chunk);
-void freeChunk(Chunk* chunk);
-void writeChunk(Chunk* chunk, uint8_t byte, int line);
-int addConstant(Chunk* chunk, Value value);
+    inline void addCode(uint8_t byte, int32_t line){
+        code.push_back(byte);
+        lines.push_back(line);
+    }
+
+    [[nodiscard]]inline size_t addConstants(double constant){
+        constants.push_back(constant);
+        return constants.size()-1;
+    }
+};
