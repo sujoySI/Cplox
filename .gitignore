@@ -3,6 +3,7 @@
 build/
 .fleet/
 .vscode/
+.idea/
 # MacOS Cache
 .DS_Store
 

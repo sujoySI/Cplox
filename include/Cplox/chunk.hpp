@@ -17,7 +17,7 @@ struct Chunk{
         lines.push_back(line);
     }
 
-    [[nodiscard]]inline size_t addConstants(double constant){
+    [[nodiscard]] inline size_t addConstants(double constant){
         constants.push_back(constant);
         return constants.size()-1;
     }

@@ -6,7 +6,7 @@
 int main(int argc, const char* argv[])
 {
     Chunk chunk{};
-    auto constant = chunk.addConstants(1.2);
+    const auto constant = chunk.addConstants(1.2);
     chunk.addCode(static_cast<uint8_t>(OpCode::OP_CONSTANT), 123);
     chunk.addCode(constant, 123);
     chunk.addCode(static_cast<uint8_t>(OpCode::OP_RETURN), 123);

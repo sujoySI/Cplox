@@ -1,12 +1,12 @@
 #include <cstdio>
 #include <fmt/core.h>
-#include "fmt/base.h"
+#include "fmt/core.h"
 #include "Cplox/debug.hpp"
 #include "Cplox/chunk.hpp"
 
 
 void disassembleChunk(Chunk& chunk, std::string_view name){
-    fmt::println("== {} ==", name);
+    fmt::print("== {} ==\n", name);
 
     for(int offset = 0; offset < chunk.code.size(); ) {
         offset = disassembleInstruction(chunk, offset);
@@ -23,7 +23,7 @@ static int constantInstruction(std::string_view name, Chunk& chunk, int offset){
 
 //const char* , size -> string_view
 int simpleInstruction(std::string_view name, int offset) {
-    fmt::println("{}", name);
+    fmt::print("{}\n", name);
 
     return offset + 1;
 }
@@ -44,7 +44,7 @@ int disassembleInstruction(Chunk& chunk, int offset){
             return constantInstruction("OP_CONSTANT", chunk, offset);
         }
         default: {
-            fmt::println("Unknown opcode {}", instruction);
+            fmt::print("Unknown opcode {}\n", instruction);
             return offset + 1;
         }
     }
